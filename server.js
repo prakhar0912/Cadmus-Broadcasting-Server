@@ -30,7 +30,7 @@ io.on('connection', socket => {
 
         console.log(user)
 
-        console.log(getRoomUsers('okbuddy'))
+        console.log(getRoomUsers(user.room))
     });
 
     // Listen for chatMessage
