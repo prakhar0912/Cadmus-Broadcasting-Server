@@ -14,9 +14,7 @@ const {
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
-    cors:{
-        origin: "*"
-    }
+    pingTimeout: 0, pingInterval: 500, origins: '*:*'
 });
 
 
@@ -37,7 +35,7 @@ io.on('connection', socket => {
     socket.on('word', msg => {
         const user = getCurrentUser(socket.id);
 
-        io.to(user.room).emit('msg', {msg});
+        io.to(user.room).emit('msg', { msg });
     });
 
     // Runs when client disconnects
